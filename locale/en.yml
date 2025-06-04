@@ -1,0 +1,163 @@
+ai-support:
+  admin:
+    # General Settings
+    general_settings: "General Settings"
+    enable_widget: "Enable AI Support Widget"
+    permission_use: "Use AI Support"
+    
+    # Model Settings
+    model_settings: "AI Model Settings"
+    provider: "AI Provider"
+    api_key: "API Key"
+    api_key_help: "Enter your AI service API key"
+    model_name: "Model Name"
+    max_tokens: "Max Tokens"
+    timeout: "Request Timeout (seconds)"
+    timeout_help: "API request timeout in seconds"
+    
+    # Usage Limit Settings
+    usage_limit_settings: "Usage Limit Settings"
+    daily_requests_limit: "Daily Requests Limit"
+    daily_requests_limit_help: "Maximum number of AI requests per user per day"
+    limit_admins: "Apply limits to administrators"
+    
+    # Usage Statistics
+    usage_stats_button: "Usage Statistics"
+    view_usage_stats: "View Usage Statistics"
+    usage_stats_help: "View detailed statistics about AI usage by users"
+    usage_stats:
+      title: "AI Usage Statistics"
+      total_usage: "Total Usage"
+      today_usage: "Today"
+      yesterday_usage: "Yesterday"
+      active_users: "Active Users"
+      load_error: "Failed to load usage statistics"
+      no_data: "No usage data available"
+      no_users: "No users found for the selected period"
+      refresh: "Refresh data"
+      search_placeholder: "Search users..."
+      period:
+        all: "All Time"
+        today: "Today"
+        yesterday: "Yesterday"
+        week: "Last 7 Days"
+        month: "Last 30 Days"
+      table:
+        user: "User"
+        count: "Usage Count"
+        last_used: "Last Used"
+    
+    # Content Settings
+    content_settings: "Content Indexing Settings"
+    enable_indexing: "Enable Content Indexing"
+    enable_indexing_help: "Allow AI to search and reference forum content"
+    search_limit: "Search Results Limit"
+    search_limit_help: "Maximum number of forum posts to include in AI context"
+    forum_url: "Forum URL"
+    forum_url_help: "Base URL of your forum for content indexing"
+    
+    # Widget Settings
+    widget_settings: "Widget Settings"
+    widget_position: "Widget Position"
+    position_bottom_right: "Bottom Right"
+    position_bottom_left: "Bottom Left"
+    theme: "Widget Theme"
+    theme_light: "Light"
+    theme_dark: "Dark"
+    theme_auto: "Auto"
+    
+    # Test Settings
+    test_connection: "Test Connection"
+    test_success: "Connection test successful!"
+    test_error: "Connection test failed. Please check your settings."
+    
+  forum:
+    # Widget
+    ai_support: "AI Support"
+    placeholder: "Ask a question..."
+    send: "Send"
+    loading: "AI is thinking..."
+    error_message: "Sorry, an error occurred. Please try again."
+    limit_reached: "You have reached your daily AI request limit."
+    connection_failed: "Connection failed. Please try again."
+    
+    # References
+    references_title: "Related Forum Posts"
+    
+    # Login prompt
+    login_required: "Please log in to use AI support"
+    login_button: "Log In"
+    close: "Close"
+    
+    # Rating
+    rate_response: "Rate this response"
+    helpful: "Helpful"
+    not_helpful: "Not helpful"
+    rating_thanks: "Thank you for your feedback!"
+
+# 扩展命名空间
+leot-ai-support-widget:
+  admin:
+    settings:
+      enabled: "Enable AI Support Widget"
+      provider: "AI Provider"
+      api_key: "API Key"
+      model_name: "Model Name"
+      max_tokens: "Max Tokens"
+      timeout: "Request Timeout"
+      usage_limit_heading: "Usage Limit Settings"
+      daily_requests_limit: "Daily Requests Limit"
+      daily_requests_limit_help: "Maximum number of AI requests per user per day"
+      daily_limit_error: "Daily request limit must be at least 1"
+      usage_stats_button: "Usage Statistics"
+      view_usage_stats: "View Usage Statistics"
+      usage_stats_help: "View detailed statistics about AI usage by users"
+      content_heading: "Content Settings"
+      enable_indexing: "Enable Forum Content Indexing"
+      enable_indexing_help: "Allow AI to search and reference forum content"
+      search_limit: "Search Result Limit"
+      search_limit_help: "Maximum number of search results to include in AI context"
+      kb_heading: "Knowledge Base Settings"
+      kb_enabled: "Enable Knowledge Base"
+      kb_search_weight: "Knowledge Base Search Weight"
+      kb_search_weight_help: "Higher values prioritize knowledge base content in AI responses"
+      kb_management: "Knowledge Base Management"
+      manage_kb_entries: "Manage Knowledge Base Entries"
+      kb_management_help: "Add, edit, or remove knowledge base entries for AI assistant"
+      widget_heading: "Widget Settings"
+      widget_position: "Widget Position"
+      position_bottom_right: "Bottom Right"
+      position_bottom_left: "Bottom Left"
+      theme: "Theme"
+      theme_light: "Light"
+      theme_dark: "Dark"
+      theme_auto: "Auto (Follow System)"
+    permissions:
+      use_ai: "Use AI Support"
+      manage_kb: "Manage knowledge base"
+    usage_stats:
+      title: "AI Usage Statistics"
+      total_usage: "Total Usage"
+      today_usage: "Today"
+      yesterday_usage: "Yesterday"
+      active_users: "Active Users"
+      load_error: "Failed to load usage statistics"
+      no_data: "No usage data available"
+      no_users: "No users found for the selected period"
+      refresh: "Refresh data"
+      search_placeholder: "Search users..."
+      period:
+        all: "All Time"
+        today: "Today"
+        yesterday: "Yesterday"
+        week: "Last 7 Days"
+        month: "Last 30 Days"
+      table:
+        user: "User"
+        count: "Usage Count"
+        last_used: "Last Used"
+  forum:
+    placeholder: "Ask AI assistant..."
+    send: "Send"
+    clear: "Clear"
+    references_title: "References"

@@ -1,0 +1,261 @@
+/* AI Support Widget - Admin Styles */ 
+
+.FormControl-container {
+  max-width: 400px;
+}
+
+.Select {
+  max-width: 400px;
+  position: relative;
+  
+  &::after {
+    content: "\f0d7";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #888;
+  }
+  
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px;
+  }
+}
+
+.AiSettingsPage {
+  .FormControl {
+    max-width: 100%;
+  }
+}
+
+.KnowledgeBaseSettingsModal {
+  .FormControl {
+    max-width: 100%;
+  }
+  
+  .KnowledgeBaseEntries {
+    margin-top: 20px;
+    
+    &-table {
+      width: 100%;
+      border-collapse: collapse;
+      
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      th {
+        background-color: #f5f5f5;
+        font-weight: bold;
+      }
+      
+      tr:hover {
+        background-color: #f9f9f9;
+      }
+      
+      .KnowledgeBaseEntries-content {
+        max-height: 100px;
+        max-width: 300px;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    }
+    
+    .ButtonGroup {
+      display: flex;
+      gap: 5px;
+    }
+  }
+}
+
+/* 移除Provider Icons部分 */ 
+
+// 添加AI使用统计模态窗口样式
+.AiUsageStatsModal {
+  .Modal-body {
+    padding: 15px;
+  }
+
+  .AiUsageStats {
+    &-summary {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      gap: 15px;
+      
+      &Item {
+        flex: 1;
+        min-width: 120px;
+        background: #2d2d2d;
+        border-radius: 5px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 1px 3px rgba(0,0,0,.3);
+      }
+      
+      &Value {
+        font-size: 24px;
+        font-weight: bold;
+        color: @primary-color;
+      }
+      
+      &Label {
+        font-size: 12px;
+        color: #aaa;
+        margin-top: 5px;
+      }
+    }
+    
+    &-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+      align-items: center;
+      
+      .AiUsageStats-periodFilter {
+        flex: 1;
+        min-width: 150px;
+      }
+      
+      .AiUsageStats-search {
+        flex: 2;
+        min-width: 200px;
+        
+        .FormControl {
+          background-color: #2d2d2d;
+          color: #fff;
+          border-color: #444;
+          
+          &::placeholder {
+            color: #888;
+          }
+        }
+      }
+      
+      .AiUsageStats-refresh {
+        flex: 0 0 auto;
+      }
+    }
+    
+    &-table {
+      margin-top: 15px;
+      overflow-x: auto;
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      
+      th {
+        text-align: left;
+        padding: 10px;
+        border-bottom: 2px solid #444;
+        cursor: pointer;
+        color: #ccc;
+        
+        &:hover {
+          background: #333;
+        }
+      }
+      
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #444;
+        color: #eee;
+      }
+      
+      .AiUsageStats-userColumn {
+        width: 40%;
+      }
+      
+      .AiUsageStats-countColumn {
+        width: 20%;
+        text-align: center;
+      }
+      
+      .AiUsageStats-dateColumn {
+        width: 40%;
+      }
+      
+      .AiUsageStats-countCell {
+        text-align: center;
+        font-weight: bold;
+        color: @primary-color;
+      }
+      
+      .AiUsageStats-noUsers {
+        text-align: center;
+        padding: 20px;
+        color: #aaa;
+      }
+    }
+    
+    &-error {
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+    }
+  }
+}
+
+// 明亮模式支持
+.Modal:not(.Modal--dark) {
+  .AiUsageStatsModal {
+    .AiUsageStats {
+      &-summary {
+        &Item {
+          background: #f8f8f8;
+          box-shadow: 0 1px 3px rgba(0,0,0,.1);
+        }
+        
+        &Label {
+          color: #888;
+        }
+      }
+      
+      &-filters {
+        .AiUsageStats-search {
+          .FormControl {
+            background-color: #fff;
+            color: #333;
+            border-color: #ddd;
+          }
+        }
+      }
+      
+      &-table {
+        th {
+          border-bottom: 2px solid #ddd;
+          color: #333;
+          
+          &:hover {
+            background: #f5f5f5;
+          }
+        }
+        
+        td {
+          border-bottom: 1px solid #eee;
+          color: #333;
+        }
+        
+        .AiUsageStats-noUsers {
+          color: #888;
+        }
+      }
+      
+      &-error {
+        color: #888;
+      }
+    }
+  }
+}

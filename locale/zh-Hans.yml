@@ -1,0 +1,76 @@
+ai-support:
+  admin:
+    # 通用设置
+    general_settings: "通用设置"
+    enable_widget: "启用AI支持小部件"
+    permission_use: "使用AI支持"
+    
+    # 模型设置
+    model_settings: "AI模型设置"
+    provider: "AI提供商"
+    api_key: "API密钥"
+    api_key_help: "输入您的AI服务API密钥"
+    model_name: "模型名称"
+    max_tokens: "最大令牌数"
+    timeout: "请求超时（秒）"
+    timeout_help: "API请求超时时间（秒）"
+    
+    # 使用限制设置
+    usage_limit_settings: "使用限制设置"
+    daily_requests_limit: "每日请求限制"
+    daily_requests_limit_help: "每个用户每天的最大AI请求数"
+    limit_admins: "对管理员应用限制"
+    
+    # 内容设置
+    content_settings: "内容索引设置"
+    enable_indexing: "启用内容索引"
+    enable_indexing_help: "允许AI搜索和引用论坛内容"
+    search_limit: "搜索结果限制"
+    search_limit_help: "包含在AI上下文中的最大论坛帖子数"
+    forum_url: "论坛URL"
+    forum_url_help: "用于内容索引的论坛基础URL"
+    
+    # 小部件设置
+    widget_settings: "小部件设置"
+    widget_position: "小部件位置"
+    position_bottom_right: "右下角"
+    position_bottom_left: "左下角"
+    theme: "小部件主题"
+    theme_light: "浅色"
+    theme_dark: "深色"
+    theme_auto: "自动"
+    
+    # 测试设置
+    test_connection: "测试连接"
+    test_success: "连接测试成功！"
+    test_error: "连接测试失败。请检查您的设置。"
+    
+  forum:
+    # Widget
+    ai_support: "AI 支持"
+    placeholder: "请输入您的问题..."
+    send: "发送"
+    clear: "清空"
+    ai_typing: "正在思考..."
+    loading: "AI 正在思考中..."
+    error_message: "抱歉，发生了错误。请重试。"
+    limit_reached: "您已达到每日 AI 请求限制。"
+    connection_failed: "连接失败。请重试。"
+    
+    # Theme
+    toggle_light: "切换到浅色模式"
+    toggle_dark: "切换到深色模式"
+    
+    # References
+    references_title: "相关论坛帖子"
+    
+    # Login prompt
+    login_required: "请登录以使用 AI 支持"
+    login_button: "登录"
+    close: "关闭"
+    
+    # Rating
+    rate_response: "为此回复评分"
+    helpful: "有帮助"
+    not_helpful: "没有帮助"
+    rating_thanks: "感谢您的反馈！"
