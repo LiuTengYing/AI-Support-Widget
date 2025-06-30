@@ -341,3 +341,104 @@ class OpenAiService implements AiServiceInterface
         return $references;
     }
 }
+
+class OpenAiService
+{
+    // ... existing code ...
+    
+    private function getApiKey(): string
+    {
+        // 修复：使用正确的配置键名
+        $apiKey = $this->settings->get('leot-ai-support-widget.api_key');
+        
+        if (empty($apiKey)) {
+            $this->logger->error('OpenAI API key is not configured');
+            throw new \Exception('OpenAI API key is not configured');
+        }
+        
+        // 验证API密钥格式
+        if (!preg_match('/^sk-[a-zA-Z0-9]{48,}$/', $apiKey)) {
+            $this->logger->error('Invalid OpenAI API key format', ['key_prefix' => substr($apiKey, 0, 10)]);
+            throw new \Exception('Invalid OpenAI API key format');
+        }
+        
+        $this->logger->info('API key loaded successfully', ['key_prefix' => substr($apiKey, 0, 10)]);
+        return $apiKey;
+    }
+    
+    private function makeRequest(string $url, array $data): array
+    {
+        $apiKey = $this->getApiKey();
+        
+        $headers = [
+            'Authorization: Bearer ' . $apiKey,
+            'Content-Type: application/json',
+        ];
+        
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_CONNECTTIMEOUT => 10,
+        ]);
+        
+        // 代理配置（如果启用）
+        $useProxy = $this->settings->get('leot-ai-support-widget.openai_use_proxy', false);
+        if ($useProxy) {
+            $proxyHost = $this->settings->get('leot-ai-support-widget.proxy_host');
+            $proxyPort = $this->settings->get('leot-ai-support-widget.proxy_port');
+            
+            if ($proxyHost && $proxyPort) {
+                curl_setopt($ch, CURLOPT_PROXY, $proxyHost . ':' . $proxyPort);
+                $this->logger->info('Using proxy', ['proxy' => $proxyHost . ':' . $proxyPort]);
+            }
+        }
+        
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error = curl_error($ch);
+        curl_close($ch);
+        
+        // 详细的错误日志
+        if ($error) {
+            $this->logger->error('cURL error', ['error' => $error, 'url' => $url]);
+            throw new \Exception('Network error: ' . $error);
+        }
+        
+        $this->logger->info('OpenAI API response', [
+            'http_code' => $httpCode,
+            'response_length' => strlen($response),
+            'url' => $url
+        ]);
+        
+        if ($httpCode !== 200) {
+            $this->logger->error('OpenAI API error', [
+                'http_code' => $httpCode,
+                'response' => $response,
+                'request_data' => $data
+            ]);
+            
+            if ($httpCode === 401) {
+                throw new \Exception('Invalid API key or unauthorized access');
+            } elseif ($httpCode === 429) {
+                throw new \Exception('Rate limit exceeded');
+            } else {
+                throw new \Exception('OpenAI API error: HTTP ' . $httpCode);
+            }
+        }
+        
+        $decodedResponse = json_decode($response, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            $this->logger->error('Invalid JSON response', ['response' => $response]);
+            throw new \Exception('Invalid response format');
+        }
+        
+        return $decodedResponse;
+    }
+    
+    // ... existing code ...
+}
