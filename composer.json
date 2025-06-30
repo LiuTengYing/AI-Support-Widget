@@ -1,0 +1,43 @@
+{
+  "name": "leot/flarum-ai-support-widget",
+  "description": "AI-powered support widget for Flarum",
+  "keywords": [
+    "flarum",
+    "extension",
+    "ai",
+    "support",
+    "chat",
+    "widget"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "version": "1.0.2",
+  "require": {
+    "flarum/core": "^1.8.0",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "authors": [
+    {
+      "name": "LeoT",
+      "email": "Leo.lty0511@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LeoT\\FlarumAiSupport\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "AI Support Widget",
+      "id": "leot-ai-support-widget",
+      "category": "feature",
+      "icon": {
+        "name": "fas fa-robot",
+        "backgroundColor": "#3f51b5",
+        "color": "#fff"
+      }
+    }
+  }
+}
